@@ -1,0 +1,212 @@
+1.1 Addition of two 8-bit unsigned numbers with GDB
+Aim :- Write an ALP to perform Addition of two 8-bit numbers and show execution with
+gdb
+
+
+1 s e c t i o n . data
+2 s e c t i o n . bss
+3
+4 s e c t i o n . t e x t
+5 g l o b a l s t a r t
+6 s t a r t :
+7
+8 mov a l ,121 ;
+9 mov b l ,100
+10 add a l , b l
+11
+12 mov eax , 1
+13 mov ebx , 0
+14 in t 80h
+
+-------------------------------------------------------------------------------------------------------------------------
+1.2 ALP to add two single digit nos.
+Aim :- Write an Assembly Language Program (ALP) to add two single digit nos.(sum≤9).
+display result with std output
+
+1 s e c t i o n . data
+2 msg db 'The sum i s : ' , 0xA
+3 len : equ $−msg
+4
+5 s e c t i o n . bss
+6 sum resb 1
+7
+8 s e c t i o n . t e x t
+9 g l o b a l s t a r t
+10 s t a r t : ; entry p o in t
+11 mov eax , ' 4 '
+12 sub eax , ' 0 ' ; t o convert from ASCII t o Hex
+13
+14 mov ebx , ' 5 '
+15 sub ebx , ' 0 '
+16 add eax , ebx
+17 add eax , ' 0 ' t o convert back from Hex t o ASCII
+18 mov [sum ] , eax
+19
+20 mov eax , 4 ; system c a l l number ( s ys w r i t e )
+21 mov ebx , 1 ; f i l e d e s c r i p t o r ( stdout )
+22 mov ecx , msg
+23 mov edx , len
+24 in t 80h ; c a l l kerne l
+25
+26 mov eax , 4 ; system c a l l number ( s ys w r i t e )
+27 mov ebx , 1 ; f i l e d e s c r i p t o r ( stdout )
+28 mov ecx , sum
+29 mov edx , 1
+30 in t 80h ; c a l l kerne l
+31
+32 mov eax , 1 ; system c a l l number ( s y s e x i t )
+33 mov ebx , 0
+34 in t 80h ; c a l l kernel
+
+----------------------------------------------------------------------------------------------------------------------------
+Aim :- Write an Assembly Language Program (ALP) to add two single digit nos.(sum≤9)
+by taking input from keyboard
+
+1 s e c t i o n . data
+2 msg1 db ” Enter a d i g i t ” , 0xA
+3 len1 : equ $−msg1
+4 msg2 db ” P lease enter a second d i g i t ” , 0xA
+5 len2 : equ $−msg2
+6 msg3 db ”The sum i s : ”
+7 len3 : equ $−msg3
+8
+9 s e c t i on . bss
+10 num1 resb 2
+11 num2 resb 2
+12 res resb 1
+13
+14 s e c t i on . t e x t
+15 g l o b a l s t a r t
+16 s t a r t : ; entry p o in t
+17 mov eax , 4
+18 mov ebx , 1
+19 mov ecx , msg1
+20 mov edx , len1
+21 in t 80h
+22
+23 mov eax , 3
+24 mov ebx , 0
+25 mov ecx , num1
+26 mov edx , 2
+27 in t 80h
+28
+29 mov eax , 4
+30 mov ebx , 1
+31 mov ecx , msg2
+32 mov edx , len2
+33 in t 80h
+34
+35 mov eax , 3
+36 mov ebx , 0
+37 mov ecx , num2
+38 mov edx , 2
+39 in t 80h
+40
+41 mov eax , 4
+42 mov ebx , 1
+43 mov ecx , msg3
+44 mov edx , len3
+45 in t 80h
+46
+47 mov eax , [ num1] ; moving the 1 s t number t o eax and 2nd no . t o ebx
+48 sub eax , ' 0 ' ; sub trac t ing a s c i i ' 0 ' t o convert i t in t o a hex 
+mov ebx , [num2]
+51 sub ebx , ' 0 ' ; sub trac t ing a s c i i ' 0 ' t o convert i t in t o a hex ←֓
+number
+52
+53 add eax , ebx ; add eax and ebx
+54 add eax , ' 0 ' ; convert the sum from hexadecimal t o ASCII
+55
+56 mov [ res ] , eax ; s t o r in g the sum in memory l o c a t i o n res
+57
+58 ; pr in t the sum
+59 mov eax , 4
+60 mov ebx , 1
+61 mov ecx , res
+62 mov edx , 1
+63 int 80h
+32 mov eax , 1 ; system c a l l number ( s y s e x i t )
+33 mov ebx , 0
+34 in t 80h ; c a l l kernel
+
+-----------------------------------------------------------------------------------------------------------------------------
+1.3 Addition of two 8-bit numbers(2 digit numbers)
+Aim :- Write an ALP to perform Addition of two 8-bit numbers(Two digit numbers).
+Display the result with message in terminal (STDOUT) for addition.
+1 s e c t i o n . data
+2 l ow er by t e : db 0
+3 h igh er by t e : db 0
+4
+5 s e c t i o n . t e x t
+6 g l o b a l s t a r t
+7 s t a r t :
+8
+9 mov a l , 12
+10 mov b l , 25
+11 add a l , b l
+12 aam
+13 add a l , ' 0 '
+14 mov [ l ow er by t e ] , a l
+15 add ah , ' 0 '
+16 mov [ h igh er by t e ] , ah
+17
+18 mov eax , 4
+19 mov ebx , 1
+20 mov ecx , h igh er by t e
+21 mov edx , 1
+22 in t 80h
+23
+24 mov eax , 4
+25 mov ebx , 1
+26 mov ecx , l ow er by t e
+27 mov edx , 1
+28 in t 80h
+29
+30 mov eax , 1
+31 in t 80h
+
+
+---------------------------------------------------------------------------------------------------------------------------
+2 Subtraction of Numbers
+2.1 Subtraction of two 8-bit unsigned numbers with GDB
+Aim :- Write an ALP to perform Subtraction of two 8-bit numbers and show execution
+with gdb.
+
+1 s e c t i o n . data
+2 s e c t i o n . bss
+3
+4 s e c t i o n . t e x t
+5 g l o b a l s t a r t
+6 s t a r t :
+7
+8 mov a l ,255
+9 mov b l ,100
+10 sub a l , b l
+32 mov eax , 1 ; system c a l l number ( s y s e x i t )
+33 mov ebx , 0
+34 in t 80h ; c a l l kernel
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+2.2 Subtraction of two 8-bit numbers. Result with std output
+Aim :- Write an ALP to perform Subtraction of two 8-bit numbers. Display the result
+with message in terminal (STDOUT) for Subtraction
+1 s e c t i o n . data
+2 msg db ”The sub tra c t i on o f two 8 b i t nos i s ” ,10 ,13
+3 len1 equ $−msg
+4
+5 s e c t i o n . bss
+6 res resb 1
+7
+8 s e c t i o n . t e x t
+9 g l o b a l s t a r t
+10 s t a r t :
+11
+12 mov a l , 6 ;
+13 mov b l , 5
+14 sub a l , b l
+15 add a l , ' 0 '
+16 mov [ res ] , a l
+
+
+
